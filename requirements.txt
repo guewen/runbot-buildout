@@ -4,7 +4,7 @@ Jinja2==2.6
 Mako==0.6.2
 MarkupSafe==0.23
 Pillow==2.5.3
-PyChart==1.39
+Python-Chart==1.39
 PyWebDAV==0.9.8
 PyYAML==3.10
 Shapely==1.5.8
