@@ -13,10 +13,10 @@ Feature: configure the runbot
   | modules_auto | repo                       |
 
   Scenario Outline: setup the repositories
-    Given I need a "runbot.repo" with name: https://github.com/camptocamp/<name>
+    Given I need a "runbot.repo" with oid: scenario.runbot_repo_<repo_name>
     And having
-    | name                 | value                                                                               |
-    | name                 | https://github.com/camptocamp/<name>                                                |
+    | key                  | value                                                                               |
+    | name                 | git@github.com:camptocamp/<repo_name>.git                                                |
     | testing              | 1                                                                                   |
     | running              | 1                                                                                   |
     | auto                 | 0                                                                                   |
@@ -31,5 +31,5 @@ Feature: configure the runbot
     | dependency_ids       | by name: https://github.com/OCA/OCB                                                 |
 
     Examples:
-    | name                |
+    | repo_name                |
     | mid_odoo            |
