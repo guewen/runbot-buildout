@@ -19,7 +19,7 @@ Feature: configure the runbot
     | name                 | git@github.com:camptocamp/<repo_name>.git                                                |
     | testing              | 1                                                                                   |
     | running              | 1                                                                                   |
-    | auto                 | 0                                                                                   |
+    | auto                 | 1                                                                                   |
     | nginx                | 1                                                                                   |
     | modules              | sale                                                                                |
     | is_custom_build      | 1                                                                                   |
@@ -31,5 +31,5 @@ Feature: configure the runbot
     | dependency_ids       | by name: https://github.com/OCA/OCB                                                 |
 
     Examples:
-    | repo_name                |
+    | repo_name           |
     | mid_odoo            |
