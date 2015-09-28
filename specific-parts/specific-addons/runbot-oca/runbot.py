@@ -31,7 +31,7 @@ class runbot_repo(osv.osv):
             mkdirs([nginx_dir])
             open(os.path.join(nginx_dir, 'nginx.conf'),'w').write(nginx_config)
             _logger.debug('reload nginx')
-            run(['sudo', '/usr/sbin/service', 'nginx', 'reload'])
+            run(['sudo', '/bin/systemctl', 'reload', 'nginx'])
 
     def cron(self, cr, uid, ids=None, context=None):
         if fqdn() == 'runbot.odoo-communty.org':
