@@ -20,21 +20,22 @@
 ##############################################################################
 
 {
-    'name': 'Runbot OCA',
+    'name': 'Runbot Camptocamp',
     'category': 'Website',
-    'summary': 'OCA specific customizations',
+    'summary': 'Camptocamp specific customizations',
     'version': '1.0',
     'description': """
-Runbot OCA Customizations
-=========================
+Runbot Camptocamp Customizations
+================================
 
-* fix nginx config to match OCA setup
+* fix nginx config to match Camptocamp setup
 
 
 Contributors
 ------------
 
 Alexandre Fayolle <alexandre.fayolle@camptocamp.com>
+Guewen Baconnier <guewen.baconnier@camptocamp.com>
 
 """,
     'author': "Odoo Community Association (OCA)",

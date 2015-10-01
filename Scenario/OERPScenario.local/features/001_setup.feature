@@ -7,3 +7,4 @@ Scenario: install modules
   | runbot_secure             |
   | runbot_build_instructions |
   | runbot_skip_tests         |
+  | runbot_camptocamp         |
