@@ -23,9 +23,29 @@ autoindex on;
 #gzip on;
 #gzip_types text/css text/plain application/xml application/json application/javascript;
 
+server {
+    server_name runbot.infra.internal;
+    listen 443 ssl default;
+    location / { proxy_pass http://127.0.0.1:<t t-esc="port"/>; }
+    location /longpolling/im/poll { return 404; }
+    location /longpolling/poll { return 404; }
+    ssl_certificate /etc/nginx/ssl/site.bundle.crt;
+    ssl_certificate_key /etc/nginx/ssl/site.key;
+}
+
+server {
+  listen 80 default;
+  server_name runbot.infra.internal;
+
+  location / {
+    rewrite ^/(.*) https://runbot.infra.internal/$1 permanent;
+  }
+
+}
+
 <t t-foreach="builds" t-as="build">
 server {
-    listen [::]:443 ssl;
+    listen 443 ssl;
     server_name ~^<t t-esc="build.dest"/>[-.].*$;
     location / {
         proxy_pass http://localhost:<t t-esc="build.port"/>;
@@ -37,14 +57,12 @@ server {
     ssl_certificate_key /etc/nginx/ssl/site.key;
 }
 server {
-    listen [::]:80;
+    listen 80;
     server_name ~^<t t-esc="build.dest"/>[-.].*$;
+
     location / {
-        proxy_pass http://localhost:<t t-esc="build.port"/>;
-        proxy_redirect http://localhost:<t t-esc="build.port"/>/ http://$host:$server_port/;
-        proxy_set_header Host $host;
+      rewrite ^/(.*) https://<t t-esc="build.dest"/>.runbot.infra.internal/$1 permanent;
     }
-    location /longpolling { proxy_pass http://127.0.0.1:<t t-esc="build.port + 1"/>; }
 }
 </t>
 
