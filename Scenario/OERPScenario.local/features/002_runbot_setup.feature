@@ -24,7 +24,7 @@ Feature: configure the runbot
     | modules              | sale                                                                                |
     | is_custom_build      | 1                                                                                   |
     | skip_test_jobs       | 1                                                                                   |
-    | custom_pre_build_cmd | ./runbot/prebuild.sh %(other_repo_path)s openerp:options.db_name=%(build_dest)s-all |
+    | custom_pre_build_cmd | ./runbot/prebuild.sh %(other_repo_path)s openerp:options.db_name=%(build_dest)s-all openerp:options.db_user=openerp_internal_runbot |
     | custom_server_params | --workers=0                                                                         |
     | custom_server_path   | bin/start_openerp                                                                   |
     | modules_auto         | repo                                                                                |
