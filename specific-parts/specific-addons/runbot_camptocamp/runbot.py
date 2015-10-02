@@ -38,3 +38,11 @@ class runbot_repo(osv.osv):
             # phase out builds on main server
             return
         return super(runbot_repo, self).cron(cr, uid, ids, context=context)
+
+    def pg_createdb(self, cr, uid, dbname):
+        self.pg_dropdb(cr, uid, dbname)
+        _logger.debug("createdb %s", dbname)
+        cmd = ['createdb', '--encoding=unicode', '--lc-collate=C', '--template=template0', dbname]
+        if config['db_user']:
+            cmd += ['--username', config['db_user']]
+        run(cmd)
