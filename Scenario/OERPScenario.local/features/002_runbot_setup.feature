@@ -29,7 +29,7 @@ Feature: configure the runbot
     | custom_server_path   | bin/start_openerp                                                                   |
     | modules_auto         | repo                                                                                |
     | dependency_ids       | by name: https://github.com/OCA/OCB                                                 |
-    | other_repo_id        | by name: https://github.com/OCA/OCB
+    | other_repo_id        | by name: https://github.com/OCA/OCB                                                 |
 
     Examples:
     | repo_name           |
