@@ -1,6 +1,13 @@
 @config @setup @runbot
 
 Feature: configure the runbot
+
+  Scenario: configure runbot options
+    Given I need a "ir.config_parameter" with key: runbot.running_max
+    And having:
+      | key   | value |
+      | value | 20    |
+
   Scenario: setup repo for OCB
   Given I need a "runbot.repo" with name: https://github.com/OCA/OCB
   And having:
