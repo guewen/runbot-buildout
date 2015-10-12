@@ -18,13 +18,14 @@ Feature: configure the runbot
   Scenario: setup repo for OCB
   Given I need a "runbot.repo" with name: https://github.com/OCA/OCB
   And having:
-  | name         | value                      |
-  | name         | https://github.com/OCA/OCB |
-  | testing      | 0                          |
-  | running      | 0                          |
-  | nginx        | 1                          |
-  | auto         | 0                          |
-  | modules_auto | repo                       |
+  | name         | value                             |
+  | name         | https://github.com/OCA/OCB        |
+  | testing      | 0                                 |
+  | running      | 0                                 |
+  | nginx        | 1                                 |
+  | auto         | 0                                 |
+  | modules_auto | repo                              |
+  | group_ids    | by oid: runbot.group_runbot_admin |
 
   Scenario Outline: setup the project repositories
     Given I need a "runbot.repo" with oid: scenario.runbot_repo_<repo_name>
