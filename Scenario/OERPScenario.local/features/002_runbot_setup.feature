@@ -2,11 +2,18 @@
 
 Feature: configure the runbot
 
-  Scenario: configure runbot options
-    Given I need a "ir.config_parameter" with key: runbot.running_max
+  Scenario Outline: configure runbot options
+    Given I need a "ir.config_parameter" with key: <key>
     And having:
-      | key   | value |
-      | value | 20    |
+      | key   | value   |
+      | value | <value> |
+
+    Examples: parameters
+      | key                  | value                 |
+      | runbot.running_max   | 20                    |
+      | runbot.domain        | runbot.infra.internal |
+      | runbot.timeout       | 1800                  |
+      | runbot.starting_port | 2000                  |
 
   Scenario: setup repo for OCB
   Given I need a "runbot.repo" with name: https://github.com/OCA/OCB
